@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct SuperHero3App: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartingView()
+                .onAppear {
+                    ThemeManager.shared.applyTheme()
+                }
         }
     }
 }
+
+
+
+
+

@@ -11,26 +11,31 @@ struct SettingsView: View {
     @State private var notificationsEnabled = true
     @State private var selectedLanguage = "English"
     @State private var volume: Double = 0.5
-    @AppStorage("appTheme") private var appTheme: String = "System"
+    @AppStorage("appTheme") private var appTheme: AppTheme = .system
+
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     let languages = ["English", "Russian", "Spanish", "French"]
-    let themes = ["System", "Light", "Dark"]
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Preferences")) {
+                Section {
                     Toggle("Enable Notifications", isOn: $notificationsEnabled)
                     Picker("Language", selection: $selectedLanguage) {
                         ForEach(languages, id: \.self) {
                             Text($0)
                         }
                     }
+                    
                     Picker("Theme", selection: $appTheme) {
-                        ForEach(themes, id: \.self) {
-                            Text($0)
+                        ForEach(AppTheme.allCases) { theme in
+                            Text(theme.displayText).tag(theme)
                         }
                     }
+                    
+                    Text(colorScheme == .dark ? "Dark Theme enabled" : "Light Theme enabled")
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
                 
                 Section(header: Text("Sound Settings")) {
@@ -40,10 +45,13 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .preferredColorScheme(appTheme == "Dark" ? .dark : (appTheme == "Light" ? .light : nil))
+            .onChange(of: appTheme) { newTheme in
+                ThemeManager.shared.currentTheme = newTheme
+            }
         }
     }
 }
+
 
 #Preview {
     SettingsView()

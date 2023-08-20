@@ -8,39 +8,47 @@
 import SwiftUI
 
 struct InfoRow: View {
-    var hero: HeroResponse
-    @EnvironmentObject var viewModel: HeroesViewModel
-
+    var hero: Hero
+    @StateObject private var networkManager = NetworkManager.shared
+    @State private var image: UIImage?
+    
     var body: some View {
         HStack {
-            if let uiImage = viewModel.images[hero.id] {
+            if let uiImage = image {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .frame(width: 100, height: 100)
-                    .clipShape(.circle)
+                    .scaledToFit()
+                    .frame(height: 70)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
             } else {
-                RoundedRectangle(cornerRadius: 50)
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.gray)
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
             }
             VStack {
                 HStack {
-                    Text("Name")
                     Text(hero.name)
                         .font(.headline)
-                    Spacer()
-                }
-                HStack {
-                    Text("ID")
-                    Text("\(hero.id)")
-                        .font(.headline)
-                    Spacer()
                 }
             }
+        }
+        .onAppear(perform: loadImage)
+    }
+    
+    func loadImage() {
+        networkManager.loadImage(for: hero) { uiImage in
+            image = uiImage
         }
     }
 }
 
-#Preview {
-    InfoRow(hero: HeroResponse(id: 1, name: "A-Bomb", images: HeroResponse.Images(sm: "https://url-to-image.com/image.jpg"), powerstats: HeroResponse.Powerstats(intelligence: 38, strength: 100, speed: 17, durability: 80, power: 24, combat: 64)))
+
+
+struct InfoRow_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoRow(hero: Hero(id: 1, name: "A-Bomb", images: HeroImage(sm: "", lg: ""), powerstats: Powerstats(intelligence: 38, strength: 100, speed: 17, durability: 80, power: 24, combat: 64)))
+    }
 }
+

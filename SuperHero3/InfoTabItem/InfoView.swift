@@ -8,24 +8,28 @@
 import SwiftUI
 
 struct InfoView: View {
-    @StateObject var viewModel = HeroesViewModel()
+    @StateObject private var networkManager = NetworkManager.shared
     
     var body: some View {
         NavigationView {
-            List(viewModel.heroes) { hero in
-                NavigationLink(destination: InfoDetails(hero: hero)) {
+            List(networkManager.heroes) { hero in
+                NavigationLink {
+                    InfoDetails(hero: hero)
+                } label: {
                     InfoRow(hero: hero)
                 }
             }
             .navigationTitle(Text("Super Heroes List"))
+            .listStyle(.plain)
             .onAppear {
-                viewModel.loadHeroes()
+                networkManager.loadHeroes()
             }
         }
-        .environmentObject(viewModel)
     }
 }
 
-#Preview {
-    InfoView()
+struct InfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoView()
+    }
 }
