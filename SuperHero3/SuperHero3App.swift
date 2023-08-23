@@ -12,10 +12,7 @@ struct SuperHero3App: App {
     
     var body: some Scene {
         WindowGroup {
-            StartingView()
-                .onAppear {
-                    ThemeManager.shared.applyTheme()
-                }
+            ContentView()
         }
     }
 }

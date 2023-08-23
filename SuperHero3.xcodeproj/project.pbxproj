@@ -11,7 +11,7 @@
 		CB09154F2A826BA6004FF558 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB09154E2A826BA6004FF558 /* NetworkManager.swift */; };
 		CB0915512A827308004FF558 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0915502A827308004FF558 /* Hero.swift */; };
 		CB8BF4D12A815E4400F5E411 /* SuperHero3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BF4D02A815E4400F5E411 /* SuperHero3App.swift */; };
-		CB8BF4D32A815E4400F5E411 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BF4D22A815E4400F5E411 /* StartingView.swift */; };
+		CB8BF4D32A815E4400F5E411 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BF4D22A815E4400F5E411 /* ContentView.swift */; };
 		CB8BF4D52A815E4700F5E411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8BF4D42A815E4700F5E411 /* Assets.xcassets */; };
 		CB8BF4D82A815E4700F5E411 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8BF4D72A815E4700F5E411 /* Preview Assets.xcassets */; };
 		CB8BF4DF2A815F3B00F5E411 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BF4DE2A815F3B00F5E411 /* InfoRow.swift */; };
@@ -20,7 +20,6 @@
 		CB8BF4E52A8246EB00F5E411 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BF4E42A8246EB00F5E411 /* InfoView.swift */; };
 		CB8BF4E72A8249AF00F5E411 /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BF4E62A8249AF00F5E411 /* HelloView.swift */; };
 		CB8BF4E92A824A5100F5E411 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8BF4E82A824A5100F5E411 /* SettingsView.swift */; };
-		CB99DE042A92297500083262 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB99DE032A92297500083262 /* ThemeManager.swift */; };
 		CB99DE062A923D8A00083262 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB99DE052A923D8A00083262 /* AppTheme.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,7 @@
 		CB0915502A827308004FF558 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		CB8BF4CD2A815E4400F5E411 /* SuperHero3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperHero3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8BF4D02A815E4400F5E411 /* SuperHero3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHero3App.swift; sourceTree = "<group>"; };
-		CB8BF4D22A815E4400F5E411 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
+		CB8BF4D22A815E4400F5E411 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CB8BF4D42A815E4700F5E411 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8BF4D72A815E4700F5E411 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB8BF4DE2A815F3B00F5E411 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
@@ -39,7 +38,6 @@
 		CB8BF4E42A8246EB00F5E411 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		CB8BF4E62A8249AF00F5E411 /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
 		CB8BF4E82A824A5100F5E411 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		CB99DE032A92297500083262 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		CB99DE052A923D8A00083262 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,8 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8BF4D02A815E4400F5E411 /* SuperHero3App.swift */,
-				CB99DE032A92297500083262 /* ThemeManager.swift */,
-				CB8BF4D22A815E4400F5E411 /* StartingView.swift */,
+				CB8BF4D22A815E4400F5E411 /* ContentView.swift */,
 				CB45C12A2A829AE000783200 /* NetworkManager */,
 				CB09154A2A825FF0004FF558 /* InfoTabItem */,
 				CB09154C2A826068004FF558 /* HelloTabItem */,
@@ -210,7 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB8BF4D32A815E4400F5E411 /* StartingView.swift in Sources */,
+				CB8BF4D32A815E4400F5E411 /* ContentView.swift in Sources */,
 				CB0915482A82597B004FF558 /* DetailRow.swift in Sources */,
 				CB0915512A827308004FF558 /* Hero.swift in Sources */,
 				CB99DE062A923D8A00083262 /* AppTheme.swift in Sources */,
@@ -222,7 +219,6 @@
 				CB8BF4E52A8246EB00F5E411 /* InfoView.swift in Sources */,
 				CB8BF4E72A8249AF00F5E411 /* HelloView.swift in Sources */,
 				CB8BF4E12A81600600F5E411 /* Post.swift in Sources */,
-				CB99DE042A92297500083262 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

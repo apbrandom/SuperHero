@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InfoView: View {
     @StateObject private var networkManager = NetworkManager.shared
+    @Binding var titleOn: Bool
+    @Binding var heightRow: Double
     
     var body: some View {
         NavigationView {
@@ -16,13 +18,14 @@ struct InfoView: View {
                 NavigationLink {
                     InfoDetails(hero: hero)
                 } label: {
-                    InfoRow(hero: hero)
+                    InfoRow(hero: hero, height: $heightRow)
                 }
             }
-            .navigationTitle(Text("Super Heroes List"))
+            .navigationTitle(titleOn ? "Super Heroes List" : "")
             .listStyle(.plain)
             .onAppear {
                 networkManager.loadHeroes()
+                
             }
         }
     }
@@ -30,6 +33,7 @@ struct InfoView: View {
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView()
+        InfoView(titleOn: .constant(true), heightRow: .constant(100.0))
     }
 }
+

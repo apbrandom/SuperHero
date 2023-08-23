@@ -11,6 +11,7 @@ struct InfoRow: View {
     var hero: Hero
     @StateObject private var networkManager = NetworkManager.shared
     @State private var image: UIImage?
+    @Binding var height: Double
     
     var body: some View {
         HStack {
@@ -18,15 +19,16 @@ struct InfoRow: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 70)
+                    .frame(height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
             } else {
                 Image(systemName: "photo")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 50)
+                    .frame(height: height)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
             }
+            
             VStack {
                 HStack {
                     Text(hero.name)
@@ -44,11 +46,9 @@ struct InfoRow: View {
     }
 }
 
-
-
 struct InfoRow_Previews: PreviewProvider {
     static var previews: some View {
-        InfoRow(hero: Hero(id: 1, name: "A-Bomb", images: HeroImage(sm: "", lg: ""), powerstats: Powerstats(intelligence: 38, strength: 100, speed: 17, durability: 80, power: 24, combat: 64)))
+        InfoRow(hero: Hero(id: 1, name: "A-Bomb", images: HeroImage(sm: "", lg: ""), powerstats: Powerstats(intelligence: 38, strength: 100, speed: 17, durability: 80, power: 24, combat: 64)), height:  .constant(100))
     }
 }
 

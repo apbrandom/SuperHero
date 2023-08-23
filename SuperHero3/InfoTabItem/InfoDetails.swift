@@ -26,6 +26,7 @@ struct InfoDetails: View {
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 25))
                 }
+                
                 Spacer()
                 
                 Group {
