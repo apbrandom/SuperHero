@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+    @AppStorage("appTheme") private var appTheme: AppTheme = .system
+    @AppStorage("titleOn") private var titleOn = true
+    @AppStorage("heightRow") private var heightRow: Double = 70.0
+    
+
+    var body: some View { 
         TabView {
-            InfoView()
+            InfoView(titleOn: $titleOn, heightRow: $heightRow)
                 .tabItem {
                     Image(systemName: "figure.archery")
                 }
@@ -18,14 +23,19 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "globe.asia.australia")
                 }
-            SettingsView()
+            SettingsView(titleOn: $titleOn, heightRow: $heightRow)
                 .tabItem {
                     Image(systemName: "gear")
                 }
         }
+        .onAppear{
+            appTheme.apply()
+        }
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

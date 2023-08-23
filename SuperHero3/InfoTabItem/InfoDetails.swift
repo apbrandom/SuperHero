@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct InfoDetails: View {
-    var hero: HeroResponse
+    var hero: Hero
+    @State private var image: UIImage?
+    @StateObject private var networkManager = NetworkManager.shared
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 15) {
+                if let uiImage = image {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                }
+                
+                Spacer()
+                
                 Group {
                     DetailRow(title: "Intelligence", value: "\(hero.powerstats.intelligence)")
                     DetailRow(title: "Strength", value: "\(hero.powerstats.strength)")
@@ -30,9 +46,22 @@ struct InfoDetails: View {
             .padding()
         }
         .navigationTitle(hero.name)
+        .onAppear{
+            loadImage()
+        }
     }
+    func loadImage() {
+        networkManager.loadImage(for: hero) { uiImage in
+            DispatchQueue.main.async {
+                image = uiImage
+            }
+        }
+    }
+
 }
 
-#Preview {
-    InfoDetails(hero: HeroResponse(id: 1, name: "A-Bomb", images: HeroResponse.Images(sm: "https://url-to-image.com/image.jpg"), powerstats: HeroResponse.Powerstats(intelligence: 38, strength: 100, speed: 17, durability: 80, power: 24, combat: 64)))
+struct InfoDetails_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoDetails(hero: Hero(id: 1, name: "A-Bomb", images: HeroImage(sm: "", lg: ""), powerstats: Powerstats(intelligence: 38, strength: 100, speed: 17, durability: 80, power: 24, combat: 64)))
+    }
 }
